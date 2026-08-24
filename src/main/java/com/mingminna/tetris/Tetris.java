@@ -1,25 +1,26 @@
 package com.mingminna.tetris;
 
+import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+
 import com.mingminna.tetris.component.Board;
 import com.mingminna.tetris.component.Generator;
 import com.mingminna.tetris.component.Renderer;
 import com.mingminna.tetris.component.Tetromino;
 import com.mingminna.tetris.component.TetrominoType;
+import com.mingminna.tetris.component.BGMPlayList;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 
-import java.util.Objects;
-
 
 public class Tetris extends GameApplication {
- 
+
     private static final int MAX_LOCK_RESETS = 15;
     private static final double LOCK_DELAY_MS = 500;
     private static final double DAS_DELAY = 170;     // unit: ms
@@ -60,8 +61,10 @@ public class Tetris extends GameApplication {
         settings.setHeight(Renderer.APP_H);
         settings.setTitle("Java-Tetris");
         settings.setVersion("");
+        settings.setAppIcon("tetris_icon.png");
         settings.setMainMenuEnabled(false);
         settings.setGameMenuEnabled(false);
+        settings.setApplicationMode(ApplicationMode.RELEASE);
     }
  
     @Override
@@ -69,6 +72,7 @@ public class Tetris extends GameApplication {
     {
         board = new Board();
         generator = new Generator();
+        BGMPlayList.start();
         restart();
         started = false;
     }
@@ -370,7 +374,7 @@ public class Tetris extends GameApplication {
         };
 
         score += base * level;
-        int newLevel = 1 + lines / 6;
+        int newLevel = 1 + lines / 7;
         
         if (newLevel != level) {
             level = newLevel;
@@ -381,7 +385,7 @@ public class Tetris extends GameApplication {
     private void render() 
     {
         if (!started) {
-            renderer.renderTitleScreen();
+            renderer.renderHomeScreen();
             return;
         }
         

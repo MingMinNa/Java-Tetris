@@ -1,5 +1,7 @@
 package com.mingminna.tetris.component;
 
+import com.mingminna.tetris.component.BGMPlayList;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -12,8 +14,8 @@ import java.util.Deque;
 public class Renderer {
 
     public static final int CELL = 30;
-    public static final int BOARD_X = 30;
-    public static final int BOARD_Y = 30;
+    public static final int BOARD_X = 100;
+    public static final int BOARD_Y = 40;
     public static final int APP_W = 600;
     public static final int APP_H = 680;
     public static final int SIDE_X = BOARD_X + Board.COLS * CELL + 30;
@@ -25,7 +27,7 @@ public class Renderer {
         this.gc = gc;
     }
 
-    public void renderTitleScreen() 
+    public void renderHomeScreen() 
     {
         gc.setTextAlign(TextAlignment.CENTER);
 
@@ -35,6 +37,10 @@ public class Renderer {
         gc.setFill(Color.CYAN);
         gc.setFont(Font.font("Consolas", FontWeight.BOLD, 60));
         gc.fillText("TETRIS", APP_W / 2.0, 150);
+        
+        gc.setFill(Color.WHITE);
+        gc.setFont(Font.font("Consolas", FontWeight.NORMAL, 15));
+        gc.fillText("BGM track: " + BGMPlayList.getCurrentTrackName(), APP_W / 2.0, APP_H - 20);
 
         TetrominoType[] allTypes = TetrominoType.values();
         double bx = APP_W / 2.0 - (allTypes.length * 36) / 2.0;
@@ -78,6 +84,12 @@ public class Renderer {
 
         gc.setFill(Color.rgb(10, 10, 15));
         gc.fillRect(BOARD_X, BOARD_Y, Board.COLS * CELL, Board.ROWS * CELL);
+
+        gc.setTextAlign(TextAlignment.CENTER);
+        gc.setFill(Color.WHITE);
+        gc.setFont(Font.font("Consolas", FontWeight.NORMAL, 15));
+        gc.fillText("BGM track: " + BGMPlayList.getCurrentTrackName(), APP_W / 2.0, APP_H - 20);
+        gc.setTextAlign(TextAlignment.LEFT);
 
         gc.setStroke(Color.rgb(45, 45, 55));
         gc.setLineWidth(1);

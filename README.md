@@ -8,17 +8,17 @@
 *  `   ↓   `： 方塊快速下降 （**soft drop**）
 ## 遊戲畫面
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*遊戲初始畫面(1)*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*遊戲初始畫面(2)*   
-<img src="https://github.com/MingMinNa/Tetris/blob/main/img/game_display/HomeScreen_display(1).png" alt="HomeScreen_display(1).png" width="200" height="200">
-<img src="https://github.com/MingMinNa/Tetris/blob/main/img/game_display/HomeScreen_display(2).png" alt="HomeScreen_display(2).png" width="200" height="200">  
+<img src="./img/game_display/HomeScreen_display(1).png" alt="HomeScreen_display(1).png" width="200" height="200">
+<img src="./img/game_display/HomeScreen_display(2).png" alt="HomeScreen_display(2).png" width="200" height="200">  
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*GameState1*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*GameState2*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*GameState3*  
-<img src="https://github.com/MingMinNa/Tetris/blob/main/img/game_display/GameScreen_State1.png" alt="GameScreen_State1.png" width="200" height="200">
-<img src="https://github.com/MingMinNa/Tetris/blob/main/img/game_display/GameScreen_state2.png" alt="GameScreen_state2.png" width="200" height="200">
-<img src="https://github.com/MingMinNa/Tetris/blob/main/img/game_display/GameScreen_State3.png" alt="GameScreen_State3.png" width="200" height="200">  
+<img src="./img/game_display/GameScreen_State1.png" alt="GameScreen_State1.png" width="200" height="200">
+<img src="./img/game_display/GameScreen_state2.png" alt="GameScreen_state2.png" width="200" height="200">
+<img src="./img/game_display/GameScreen_State3.png" alt="GameScreen_State3.png" width="200" height="200">  
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*GameOver*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*GameClear*  
-<img src="https://github.com/MingMinNa/Tetris/blob/main/img/game_display/GameOver.png" alt="GameOver.png" width="200" height="200">
-<img src="https://github.com/MingMinNa/Tetris/blob/main/img/game_display/GameClear.png" alt="GameClear.png" width="200" height="200">  
+<img src="./img/game_display/GameOver.png" alt="GameOver.png" width="200" height="200">
+<img src="./img/game_display/GameClear.png" alt="GameClear.png" width="200" height="200">  
 
 註：  
 (1) 當分數達到 500 分時，進入 State2； 當分數達到 1000 分時，進入 State3  

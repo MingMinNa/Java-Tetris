@@ -17,7 +17,7 @@ public class BGMPlayList {
 
     private static int currentIndex = 0;
     private static boolean started = false;
-    private static MediaPlayer player;
+    private static MediaPlayer player = null;
 
     public static void start() 
     {
@@ -25,6 +25,12 @@ public class BGMPlayList {
             playCurrent();
             started = true;
         }
+    }
+    
+    public static void stop()
+    {
+        disposeCurrentPlayer();
+        started = false;
     }
 
     public static String getCurrentTrackName()
@@ -36,6 +42,8 @@ public class BGMPlayList {
 
     private static void playCurrent() 
     {
+        disposeCurrentPlayer();
+
         String path = BGMPlayList.class.getResource(
             "/" + tracks.get(currentIndex)).toExternalForm();
             
@@ -50,5 +58,15 @@ public class BGMPlayList {
     {
         currentIndex = (currentIndex + 1) % tracks.size();
         playCurrent();
+    }
+
+    private static void disposeCurrentPlayer()
+    {
+        if (player != null) {
+            player.setOnEndOfMedia(null);
+            player.stop();
+            player.dispose();
+            player = null;
+        }
     }
 }

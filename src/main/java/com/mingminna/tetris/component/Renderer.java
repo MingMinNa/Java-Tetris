@@ -44,6 +44,7 @@ public class Renderer {
 
         TetrominoType[] allTypes = TetrominoType.values();
         double bx = APP_W / 2.0 - (allTypes.length * 36) / 2.0;
+
         for (TetrominoType t : allTypes) {
             gc.setFill(t.getColor());
             gc.fillRect(bx, 180, 30, 30);
@@ -66,6 +67,7 @@ public class Renderer {
                 "P: Pause     ",
                 "R: Restart   "
         };
+
         double ty = 330;
         for (String line : lines) {
             gc.fillText(line, APP_W / 2.0, ty);
@@ -132,7 +134,7 @@ public class Renderer {
 
         drawSidebar(holdType, nextQueue, score, level, lines, canHold);
 
-        if (paused) overlay("PAUSED\nPress P to Resume");
+        if (paused  ) overlay("PAUSED\nPress P to Resume");
         if (gameOver) overlay("GAME OVER\nPress R to Restart\nPress ESC to Return");
     }
 
@@ -151,7 +153,12 @@ public class Renderer {
     {
         gc.setStroke(color);
         gc.setLineWidth(2);
-        gc.strokeRect(BOARD_X + c * CELL + 2, BOARD_Y + r * CELL + 2, CELL - 4, CELL - 4);
+        gc.strokeRect(
+            BOARD_X + c * CELL + 2, 
+            BOARD_Y + r * CELL + 2, 
+            CELL - 4, 
+            CELL - 4
+        );
     }
 
     private void drawSidebar(

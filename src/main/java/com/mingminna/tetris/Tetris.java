@@ -70,9 +70,9 @@ public class Tetris extends GameApplication {
     @Override
     protected void initGame() 
     {
+        BGMPlayList.start();
         board = new Board();
         generator = new Generator();
-        BGMPlayList.start();
         restart();
         started = false;
     }
@@ -251,7 +251,14 @@ public class Tetris extends GameApplication {
         }
         render();
     }
- 
+
+    @Override
+    protected void onExit() 
+    {
+        BGMPlayList.stop();
+        System.exit(0);
+    }
+
     private void restart() 
     {
         board.clear();
@@ -352,7 +359,6 @@ public class Tetris extends GameApplication {
         }
 
         clearLinesAndScore();
-
         if (!gameOver) {
             spawnPiece();
             canHold = true;

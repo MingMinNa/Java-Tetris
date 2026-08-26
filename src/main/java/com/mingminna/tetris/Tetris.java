@@ -14,19 +14,29 @@ import com.mingminna.tetris.component.Tetromino;
 import com.mingminna.tetris.component.TetrominoType;
 import com.mingminna.tetris.component.BGMPlayList;
 
+import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
 
 public class Tetris extends GameApplication {
+    
+    // Image Resources (textures)
+    public static final String iconFilename = "tetris_icon.png";
+    public static final String muteFilename = "mute.png";
+    public static final String unmuteFilename = "unmute.png";
+    
+    private ImageView musicButton;
+    private Image muteImage, unmuteImage;
 
     private static final int MAX_LOCK_RESETS = 15;
     private static final double LOCK_DELAY_MS = 500;
     private static final double DAS_DELAY = 170;     // unit: ms
     private static final double ARR = 50;            // unit: ms
  
-    
     private Board board;
     private Generator generator;
     private Renderer renderer;
@@ -61,7 +71,7 @@ public class Tetris extends GameApplication {
         settings.setHeight(Renderer.APP_H);
         settings.setTitle("Java-Tetris");
         settings.setVersion("");
-        settings.setAppIcon("tetris_icon.png");
+        settings.setAppIcon(iconFilename);
         settings.setMainMenuEnabled(false);
         settings.setGameMenuEnabled(false);
         settings.setApplicationMode(ApplicationMode.RELEASE);
@@ -84,8 +94,9 @@ public class Tetris extends GameApplication {
         gc = canvas.getGraphicsContext2D();
         renderer = new Renderer(gc);
         FXGL.getGameScene().addUINode(canvas);
+        initMusicButton();
     }
- 
+
     @Override
     protected void initInput() 
     {
@@ -223,7 +234,31 @@ public class Tetris extends GameApplication {
         };
         input.addAction(home, KeyCode.ESCAPE);
     }
- 
+    
+    protected void initMusicButton()
+    {
+        double size = 32;
+        double margin = 12;
+
+        muteImage = FXGL.getAssetLoader().loadTexture(muteFilename).getImage();
+        unmuteImage = FXGL.getAssetLoader().loadTexture(unmuteFilename).getImage();
+
+        musicButton = new ImageView(BGMPlayList.isMuted() ? muteImage : unmuteImage);
+        musicButton.setFitWidth(size);
+        musicButton.setFitHeight(size);
+        musicButton.setTranslateX(Renderer.APP_W - size - margin);
+        musicButton.setTranslateY(margin);
+        musicButton.setCursor(Cursor.HAND);
+
+        musicButton.setOnMouseClicked(e -> {
+            BGMPlayList.toggleMute();
+            musicButton.setImage(BGMPlayList.isMuted() ? muteImage : unmuteImage);
+        });
+
+        musicButton.setVisible(true);
+        FXGL.getGameScene().addUINode(musicButton);
+    }
+
     @Override
     protected void onUpdate(double tpf) 
     {

@@ -9,6 +9,7 @@ import java.nio.file.Path;
 
 public class BGMPlayList {
 
+    // Music Resources
     private static final List<String> tracks = List.of(
         "assets/music/tetris-theme-classical.mp3",
         "assets/music/tetris-theme-piano.mp3",
@@ -17,6 +18,7 @@ public class BGMPlayList {
 
     private static int currentIndex = 0;
     private static boolean started = false;
+    private static boolean muted = false;
     private static MediaPlayer player = null;
 
     public static void start() 
@@ -31,6 +33,24 @@ public class BGMPlayList {
     {
         disposeCurrentPlayer();
         started = false;
+    }
+
+    public static boolean isMuted()
+    {
+        return muted;
+    }
+
+    public static void setMuted(boolean value)
+    {
+        muted = value;
+        if (player != null) {
+            player.setMute(muted);
+        }
+    }
+
+    public static void toggleMute()
+    {
+        setMuted(!muted);
     }
 
     public static String getCurrentTrackName()
@@ -50,6 +70,7 @@ public class BGMPlayList {
         Media media = new Media(path);
         player = new MediaPlayer(media);
 
+        player.setMute(muted);
         player.setOnEndOfMedia(BGMPlayList::playNext);
         player.play();
     }
